@@ -39,24 +39,24 @@ class Main extends PluginBase implements Listener
   {
     $this->getLogger()->info("MegaPVP has been Enabled!");
     $this->config=new Config($this->getDataFolder() . "config.yml", Config::YAML, array());
-		if(!$this->config->exists("lobby"))
-		{
-			$this->config->set("lobby",lobbymap);
-		}
-		if(!$this->config->exists("arena"))
-		{
-			$this->config->set("arena",arenamap);
-		}
-		if(!$this->config->exists("WaitTime"))
-		{
-			$this->config->set("WaitTime",120);
-		}
-		if(!$this->config->exists("FinishTime"))
-		{
-			$this->config->set("FinishTime",120);
-		}
-		$this->config->set("FinishTime",120);
-		$this->config->set("FinishTime",120);
+    if(!$this->config->exists("lobby"))
+    {
+	$this->config->set("lobby",lobbymap);
+	}
+    if(!$this->config->exists("arena"))
+    {
+	$this->config->set("arena",arenamap);
+	}
+    if(!$this->config->exists("WaitTime"))
+    {
+	$this->config->set("WaitTime",120);
+	}
+    if(!$this->config->exists("FinishTime"))
+    {
+	$this->config->set("FinishTime",120);
+	}
+	$this->config->set("//Plugin By EmreTr1");
+	$this->config->set("//Test Server: minedogs.noip.me Port:19132");
 		
   }
   
