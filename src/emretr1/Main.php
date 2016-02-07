@@ -8,6 +8,8 @@ use pocketmine\level\sound\BatSound;
 
 use pocketmine\level\sound\ClickSound;
 
+use pocketmine\level\sound\FizzSound;
+
 use pocketmine\event\Listener;
 
 use pocketmine\command\Command;
@@ -49,7 +51,7 @@ class Main extends PluginBase implements Listener
           if(isset($args[0])) {
               if($sender instanceof Player){
                 $status = $args[0];
-                  $sender->setNameTag(implode("<-*->");
+                  $sender->setNameTag(implode("<-*->"));
                   $sender->sendMessage("You Joined the match!");
                   $sender->OnStart();
               }
@@ -106,6 +108,7 @@ class Main extends PluginBase implements Listener
         case 0:
           $this->OnFinish;
           $player->teleport($this->arena);
+          $player->setNameTag(implode("KILLER"));
           $player->getLevel()->addSound(new BatSound($player));
           $player->sendMessage("Game has been Started!");
           $player->sendPopUp("Go go go! Kill the Enemies!");
@@ -143,9 +146,10 @@ class Main extends PluginBase implements Listener
           $player->sendTip("§6Finishing in 2:00");
         case 0:
           $player->sendMessage("§cGame Finished!");
+          $player->getLevel()->addSound(new FizzSound($player));
           $player->getInventory()->clearAll();
           $player->setLevel(world);
       }
   }
 }
-//to be countined...
+//to be countined... IN DEVELOPMENT
