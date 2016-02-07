@@ -34,6 +34,7 @@ class Main extends PluginBase implements Listener
   public function OnEnable()
   {
     $this->getLogger()->info("MegaPVP has been Enabled!");
+    $this->config=new Config($this->getDataFolder() . "config.yml", Config::YAML, array());
   }
   
   public function OnDisable()
