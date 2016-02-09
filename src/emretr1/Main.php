@@ -3,42 +3,35 @@
 namespace MegaPVP;
 
 use pocketmine\plugin\PluginBase;
-
 use pocketmine\level\sound\BatSound;
-
 use pocketmine\level\sound\ClickSound;
-
 use pocketmine\level\sound\FizzSound;
-
 use pocketmine\event\Listener;
-
 use pocketmine\command\Command;
-
 use pocketmine\command\CommandSender;
-
 use pocketmine\nbt\tag\NameTag;
-
 use pocketmine\scheduler\PluginTask;
-
 use pocketmine\scheduler\Task;
-
 use pocketmine\utils\TextFormat;
-
 use pocketmine\level\Level;
-
 use pocketmine\level\Position;
-
 use pocketmine\level\particle\FlameParticle;
-
 use pocketmine\utils\Config;
-
 class Main extends PluginBase implements Listener
 {
   
   public function OnEnable()
   {
+      if(!self::$obj instanceof Main)
+      {
+	  self::$obj = $this;
+      }
+    $this->getServer()->getPluginManager()->registerEvents($this,$this);
     $this->getLogger()->info("MegaPVP has been Enabled!");
     $this->config=new Config($this->getDataFolder() . "config.yml", Config::YAML, array());
+    $this->lobby=(int)$this->config->get("lobby");
+    $this->WaitTime=(int)$this->config->get("WaitTime");
+    $this->FinishTime=(int)$this->config->get("FinishTime");
     if(!$this->config->exists("lobby"))
     {
 	$this->config->set("lobby",lobbymap);
